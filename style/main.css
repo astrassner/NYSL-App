@@ -109,3 +109,7 @@ footer a{
     text-decoration: none;
     color: black;
 }
+
+.buttons a:active{
+    background-color: darkgreen;
+}
