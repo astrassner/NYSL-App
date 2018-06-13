@@ -87,7 +87,7 @@ footer a{
     
 }
 
-.teams{
+.buttons{
     position: absolute;
     top: 12%;
     display: flex;
@@ -97,10 +97,15 @@ footer a{
     justify-content: center;
 }
 
-.teams button{
+.buttons a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100px;
     width: 150px;
     margin: 18px;
     background-color: green;
     font-size: 20px;
+    text-decoration: none;
+    color: black;
 }
