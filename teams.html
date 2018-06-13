@@ -15,14 +15,11 @@
         <a class="filler" href="#"></a>
 
     </header>
-    
-    <section class="buttons" id="teams">
-        <a href="#">U1</a>
-        <a href="#">U2</a>
-        <a href="#">U3</a>
-        <a href="#">U4</a>
-        <a href="#">U5</a>
-        <a href="#">U6</a>
+
+    <section class="buttons match" id="teams">
+            <div v-for="x in teams">
+                <a href="#">{{x.name}}</a>
+            </div>
     </section>
 
 

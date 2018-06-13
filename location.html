@@ -9,26 +9,24 @@
 </head>
 
 <body>
-   <header>
+    <header>
         <a href="index.html"><img src="style/icons/home_white.svg" alt=""></a>
         <img src="style/nysl_logo.png" alt="NYSL logo">
         <a class="filler" href="#"></a>
     </header>
-   
-   <section class="buttons" id="loctions">
-        <a target="_blank" href="https://goo.gl/maps/GKqsC1V3t6q">AJ Katzenmaier</a>
-        <a target="_blank" href="https://goo.gl/maps/ZsSnVxXkznr">Greenbay</a>
-        <a target="_blank" href="https://goo.gl/maps/LnPbKwtnAz92">Howard <br> A Yeager</a>
-        <a target="_blank" href="https://goo.gl/maps/GTzKf1n3RBS2">Marjorie P Hart</a>
-        <a target="_blank" href="https://goo.gl/maps/6R6dEQv8woR2">North</a>
-        <a target="_blank" href="https://goo.gl/maps/c6UpqvEoxB42">South</a>
-   </section>
-   
-   
-   
-   
-   
-   <!-- jQuery library -->
+
+    <section class="buttons match" id="loctions">
+        <div v-for="x in locations">
+            <a target="_blank" :href="x.url">{{x.name}}</a>
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -36,6 +34,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
     <!-- main -->
     <script src="scripts/main.js"></script>
-    
+
 </body>
 </html>
