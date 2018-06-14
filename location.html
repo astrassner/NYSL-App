@@ -14,17 +14,19 @@
         <img src="style/nysl_logo.png" alt="NYSL logo">
         <a class="filler" href="#"></a>
     </header>
+    
+    <div class="match">
 
-    <section class="buttons match" id="loctions">
+    <section class="buttons" id="loctions">
         <div v-for="x in locations">
-            <a target="_blank" :href="x.url">{{x.name}}</a>
+            <div @click="openLocations(x.url)" class="linkedButtons">
+                {{x.name}}
+            </div>
         </div>
 
     </section>
-
-
-
-
+    
+    </div>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

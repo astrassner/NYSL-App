@@ -30,7 +30,6 @@ header{
     position: absolute;
     height: 76%;
     width: 100%;
-    overflow: auto;
     top: 12%;
     display: flex;
     justify-content: center;
@@ -97,20 +96,48 @@ footer a{
     justify-content: center;
 }
 
-.buttons a{
+.linkedButtons{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100px;
     width: 150px;
     margin: 18px;
     background-color: green;
     font-size: 20px;
-    text-decoration: none;
+    /*text-decoration: none;*/
     color: black;
     box-shadow: 2px 2px 4px #000000;
 }
 
-.buttons a:active{
+.linkedButtons:active{
     background-color: darkgreen;
+}
+
+.buttons img{
+    height: 50%;
+}
+
+.matchList{
+    position: absolute;
+    top: 12%;
+    height: 88
+    overflow: auto;
+    width: 100%;
+}
+
+.box{
+    border: 1px solid black; 
+    color: black;
+}
+
+.box img{
+    height: 9vh;
+    margin-bottom: 10px;
+}
+
+.detailedTeam{
+    display: flex;
+    justify-content: space-around;
 }
