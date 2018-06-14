@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="styles/main.css">
     <title></title>
 </head>
 
 <body>
     <header>
-        <a href="index.html"><img src="style/icons/home_white.svg" alt=""></a>
-        <img src="style/nysl_logo.png" alt="NYSL logo">
+        <a href="index.html"><img src="styles/icons/home_white.svg" alt=""></a>
+        <img src="styles/nysl_logo.png" alt="NYSL logo">
         <a class="filler" href="#"></a>
     </header>
-
-    <section class="match" id="matchList">
-        <div v-for="x in games">
-            <div class="box">
-                <div class="allMatches">
-                    <p>When: {{x.date}} </p>
-                    <div class="detailedTeam">
-
-                        <img :src="x.emblem1" alt="team1">
-                        <img :src="x.emblem2" alt="team2">
-
-                    </div>
-                    <p>Time: {{x.time}}</p>
-                    <p>Location: {{x.location}}</p>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
-
-
-
+    
+    <div class="match">
+        
+    </div>
 
 
     <!-- jQuery library -->
@@ -50,4 +31,5 @@
     <script src="scripts/main.js"></script>
 
 </body>
+
 </html>

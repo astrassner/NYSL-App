@@ -122,7 +122,6 @@ footer a{
 .matchList{
     position: absolute;
     top: 12%;
-    height: 88
     overflow: auto;
     width: 100%;
 }
