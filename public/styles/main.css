@@ -2,19 +2,15 @@ body{
     height: 100%;
 }
 
-header img{
+.header img{
     height: 100%;
 }
 
-header a img{
-    height: 7vh;
-}
-
-.filler{
+.icon{
     width: 7vh;
 }
 
-header{
+.header{
     display: flex;
     justify-content: space-around;
     background-color: magenta;
@@ -63,27 +59,20 @@ header{
     font-size: 15px;
 }
 
-footer{
+.footer{
     height: 12%;
     display: flex;
     background-color: magenta;
     border: 1px solid black;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     justify-content: space-around;
-}
-
-footer img{
-    height: 7vh;
-}
-
-footer a{
-    display: flex;
     align-items: center;
-    flex-grow: 1;
-    justify-content: center;
-    
+}
+
+.footer img{
+    height: 7vh;
 }
 
 .buttons{
@@ -106,7 +95,6 @@ footer a{
     margin: 18px;
     background-color: green;
     font-size: 20px;
-    /*text-decoration: none;*/
     color: black;
     box-shadow: 2px 2px 4px #000000;
 }
@@ -119,10 +107,9 @@ footer a{
     height: 50%;
 }
 
-.matchList{
+.matchListBox{
     position: absolute;
     top: 12%;
-    overflow: auto;
     width: 100%;
 }
 
@@ -132,11 +119,40 @@ footer a{
 }
 
 .box img{
-    height: 9vh;
+    height: 12vh;
     margin-bottom: 10px;
+    
 }
 
 .detailedTeam{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.matchScreenBox{
+    position: absolute;
+    top: 12%;
+    width: 100%;
+}
+
+.matchBox img{
+    height: 15vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.gamemap{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#fightIcon{
+    height: 8vh;
+}
+
+.matchScreen, .locations, .teams, .matchList{
+    display: none;
 }

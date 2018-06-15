@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,9 +18,28 @@
     </header>
 
     <div class="match">
-        <section>
-        
-        
+        <section class="matchScreen">
+            <div v-for="x in games">
+                <div class="matchBox">
+                    <div class="allMatches">
+                        <p>When: {{x.date}} </p>
+                        <p>Teams: {{x.teams}}</p>
+                        <div class="detailedTeam">
+
+                            <img :src="x.emblem1" alt="team1">
+                            <img src="styles/icons/vs2.svg" alt="vs" id="fightIcon">
+                            <img :src="x.emblem2" alt="team2">
+
+                        </div>
+                        <p>Time: {{x.time}}</p>
+                        <p>Location: {{x.location}}</p>
+                        <div class="gamemap">
+                            <iframe name="gamemap" :src="x.url" width="200" height="200" frameborder="0" style="border:1px solid black" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </section>
     </div>
@@ -46,4 +67,5 @@
     <script src="scripts/main.js"></script>
 
 </body>
+
 </html>

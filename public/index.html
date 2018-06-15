@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-   
+
     <meta charset="utf-8">
-    
+
     <!-- Icons for different devices -->
 
     <link rel="shortcut icon" sizes="128x128" href="styles/icons/screenButton4.png">
@@ -25,40 +25,153 @@
 </head>
 
 <body>
-    <header>
-        <img src="styles/nysl_logo.png" alt="NYSL logo">
-    </header>
 
     <div class="match">
 
-        <section class="upcomingEvents">
+        <section class="index">
 
-            <div class="eventBox">
-                <div class="boxHeader">
-                    <h3>Upcoming Events</h3>
+            <div class="header">
+                <img src="styles/nysl_logo.png" alt="NYSL logo">
+            </div>
+
+            <div class="upcomingEvents">
+
+                <div class="eventBox">
+                    <div class="boxHeader">
+                        <h3>Upcoming Events</h3>
+                    </div>
+                    <div class="text">
+                        <h4>August 4</h4>
+                        <p>NYSL Fundraiser</p>
+                        <h4>August 16</h4>
+                        <p>Season Kick-off: Meet the Teams</p>
+                        <h4>September 1</h4>
+                        <p>First Game of the Season</p>
+                    </div>
                 </div>
-                <div class="text">
-                    <h4>August 4</h4>
-                    <p>NYSL Fundraiser</p>
-                    <h4>August 16</h4>
-                    <p>Season Kick-off: Meet the Teams</p>
-                    <h4>September 1</h4>
-                    <p>First Game of the Season</p>
+
+                <div class="footer">
+
+                    <img src="styles/icons/soccer-ball_white.svg" alt="teams">
+                    <img src="styles/icons/chat_white.svg" alt="chat">
+                    <img src="styles/icons/navigation_white.svg" alt="locations">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="locations">
+
+            <div class="header">
+                <img src="styles/icons/home_white.svg" alt="home" class="icon">
+                <img src="styles/nysl_logo.png" alt="NYSL logo">
+                <div class="icon" href="#"></div>
+            </div>
+
+            <div class="buttons">
+                <div v-for="x in locations">
+                    <div @click="openLocations(x.url)" class="linkedButtons">
+                        {{x.name}}
+                    </div>
                 </div>
             </div>
 
         </section>
 
+        <section class="teams" v-if="hide">
+
+            <div class="header">
+                <img src="styles/icons/home_white.svg" alt="" class="icon">
+                <img src="styles/nysl_logo.png" alt="NYSL logo">
+                <div class="icon" href="#"></div>
+            </div>
+
+            <div class="buttons">
+                <div v-for="x in teams">
+                    <div @click="openTeam($event.target)" :data-value="x.name" class="linkedButtons">
+                        <img :src="x.emblem" :data-value="x.name" alt="team emblem">{{x.name}}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="matchList" v-if="!hide">
+
+            <div class="header">
+                <img src="styles/icons/home_white.svg" alt="" class="icon">
+                <img src="styles/nysl_logo.png" alt="NYSL logo">
+                <div class="icon" href="#"></div>
+            </div>
+
+            <div class="matchListBox">
+
+                <div v-for="x in games">
+                    <div class="box">
+
+                        <div class="allMatches">
+                            <p>When: {{x.date}} </p>
+                            <p>Teams: {{x.teams}}</p>
+
+
+                            <div class="detailedTeam">
+
+                                <img :src="x.emblem1" alt="team1">
+                                <img src="styles/icons/vs2.svg" alt="vs" id="fightIcon">
+                                <img :src="x.emblem2" alt="team2">
+
+                            </div>
+                            <p>Time: {{x.time}}</p>
+                            <p>Location: {{x.location}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="matchScreen">
+
+            <div class="header">
+                <img src="styles/icons/home_white.svg" alt="" class="icon">
+                <img src="styles/nysl_logo.png" alt="NYSL logo">
+                <div class="icon" href="#"></div>
+            </div>
+
+            <div class="matchScreenBox">
+
+                <div v-for="x in games">
+                    <div class="matchBox">
+                        <div class="allMatches">
+                            <p>When: {{x.date}} </p>
+                            <p>Teams: {{x.teams}}</p>
+                            <div class="detailedTeam">
+
+                                <img :src="x.emblem1" alt="team1">
+                                <img src="styles/icons/vs2.svg" alt="vs" id="fightIcon">
+                                <img :src="x.emblem2" alt="team2">
+
+                            </div>
+                            <p>Time: {{x.time}}</p>
+                            <p>Location: {{x.location}}</p>
+                            <div class="gamemap">
+                                <iframe name="gamemap" :src="x.url" width="200" height="200" frameborder="0" style="border:1px solid black" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <img src="styles/icons/chat_white.svg" alt="chat">
+            </div>
+
+
+        </section>
+
     </div>
-
-    <footer>
-
-        <a href="teams.html"><img src="styles/icons/soccer-ball_white.svg" alt="teams"></a>
-        <a href="chatRoom.html"><img src="styles/icons/chat_white.svg" alt="chat"></a>
-        <a href="location.html"><img src="styles/icons/navigation_white.svg" alt="locations"></a>
-
-    </footer>
-
 
     <!-- firebase -->
 
@@ -74,7 +187,6 @@
             messagingSenderId: "380514830212"
         };
         firebase.initializeApp(config);
-
     </script>
 
     <!-- jQuery library -->

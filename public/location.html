@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,18 +15,21 @@
         <img src="styles/nysl_logo.png" alt="NYSL logo">
         <a class="filler" href="#"></a>
     </header>
-    
+
     <div class="match">
 
-    <section class="buttons" id="loctions">
-        <div v-for="x in locations">
-            <div @click="openLocations(x.url)" class="linkedButtons">
-                {{x.name}}
+        <section class="loctions">
+          
+           <div class="buttons">
+            <div v-for="x in locations">
+                <div @click="openLocations(x.url)" class="linkedButtons">
+                    {{x.name}}
+                </div>
             </div>
-        </div>
+            </div>
 
-    </section>
-    
+        </section>
+
     </div>
 
     <!-- jQuery library -->
