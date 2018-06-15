@@ -50,13 +50,13 @@
                     </div>
                 </div>
 
-                <div class="footer">
+            </div>
 
-                    <img src="styles/icons/soccer-ball_white.svg" alt="teams">
-                    <img src="styles/icons/chat_white.svg" alt="chat">
-                    <img src="styles/icons/navigation_white.svg" alt="locations">
+            <div class="footer">
 
-                </div>
+                <img src="styles/icons/soccer-ball_white.svg" @click="buttonTeams()" alt="teams">
+                <img src="styles/icons/chat_white.svg" alt="chat">
+                <img src="styles/icons/navigation_white.svg" @click="buttonLocation()"  alt="locations">
 
             </div>
 
@@ -80,7 +80,7 @@
 
         </section>
 
-        <section class="teams" v-if="hide">
+        <section class="teams">
 
             <div class="header">
                 <img src="styles/icons/home_white.svg" alt="" class="icon">
@@ -98,7 +98,7 @@
             </div>
         </section>
 
-        <section class="matchList" v-if="!hide">
+        <section class="matchList">
 
             <div class="header">
                 <img src="styles/icons/home_white.svg" alt="" class="icon">
@@ -163,7 +163,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer">
                 <img src="styles/icons/chat_white.svg" alt="chat">
             </div>

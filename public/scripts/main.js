@@ -6,7 +6,8 @@ var app = new Vue({
         locations: [],
         games: [],
         allGames: [],
-        hide: true
+       /* hide: true,*/
+        
 
     },
     created: function () {
@@ -40,12 +41,23 @@ var app = new Vue({
                 return game.teams.split(" ").includes(teamName);
             })
             
-            this.games = gamesToShow;    
+            this.games = gamesToShow; 
             
-            /*$(".buttons").hide();*/
+            $(".teams").toggle();
+            $(".matchList").toggle();
             
-            this.hide = false;
+            /*this.hide = false;*/
             
+        },
+        buttonLocation: function(){
+            
+            $(".index").toggle();
+            $(".locations").toggle();
+        },
+        buttonTeams: function(){
+            
+            $(".index").toggle();
+            $(".teams").toggle();
         }
 
     }
