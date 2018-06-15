@@ -43,22 +43,34 @@ var app = new Vue({
             
             this.games = gamesToShow; 
             
-            $(".teams").toggle();
-            $(".matchList").toggle();
+            $(".teams, .matchList").toggle();
             
             /*this.hide = false;*/
             
         },
         buttonLocation: function(){
             
-            $(".index").toggle();
-            $(".locations").toggle();
+            $(".index, .locations").toggle();
+            
         },
         buttonTeams: function(){
             
-            $(".index").toggle();
-            $(".teams").toggle();
-        }
+            $(".index, .teams").toggle();
+            
+        },
+        buttonHome1: function(){
+            
+            $(".locations, .index").toggle();
+            
+        },
+        buttonHome2: function(){
+            
+            $(".teams, .index").toggle();
+        },
+        buttonHome3: function(){
+            
+            $(".matchList, .index").toggle();
+        },
 
     }
 })
