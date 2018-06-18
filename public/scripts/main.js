@@ -65,6 +65,12 @@ var app = new Vue({
         buttonHome4: function(){
             $(".matchScreen, .index").toggle();
         },
+        buttonHome5: function(){
+            $(".allChat, .index").toggle();  
+        },
+        buttonHome6: function(){
+            $(".matchChat, .index").toggle();  
+        },
         
         singleMatch: function(x){
             
@@ -103,7 +109,14 @@ var app = new Vue({
         },
         buttonBack3: function(){
             
-            $(".teams, .index").toggle();
+            $(".matchChat, .allChat").toggle();
+        },
+        buttonChat: function(){
+            $(".index, .allChat").toggle();
+        },
+        buttonChat2: function(){
+            
+            $(".matchScreen, .matchChat").toggle();
         }
 
     }
