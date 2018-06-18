@@ -83,9 +83,9 @@
         <section class="teams">
 
             <div class="header">
-                <img src="styles/icons/home_white.svg" @click="buttonHome2" alt="" class="icon">
+                <img src="styles/icons/home_white.svg" @click="buttonHome2" alt="home" class="icon">
                 <img src="styles/nysl_logo.png" alt="NYSL logo">
-                <div class="icon" href="#"></div>
+                <img @click="buttonBack3" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="buttons">
@@ -101,9 +101,9 @@
         <section class="matchList">
 
             <div class="header">
-                <img src="styles/icons/home_white.svg" @click="buttonHome3" alt="" class="icon">
+                <img src="styles/icons/home_white.svg" @click="buttonHome3" alt="home" class="icon">
                 <img src="styles/nysl_logo.png" alt="NYSL logo">
-                <div class="icon" href="#"></div>
+                <img @click="buttonBack2" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="matchListBox">
@@ -111,20 +111,20 @@
                 <div v-for="x in games">
                     <div class="box">
 
-                        <div class="allMatches">
-                            <p>When: {{x.date}} </p>
-                            <p>Teams: {{x.teams}}</p>
+                        <div @click="singleMatch($event.target)" class="allMatches" :data-value="x.teams" :data-time="x.time">
+                            <p class="notClicking">When: {{x.date}} </p>
+                            <p class="notClicking">Teams: {{x.teams}}</p>
 
 
-                            <div class="detailedTeam">
+                            <div class="detailedTeam notClicking">
 
-                                <img :src="x.emblem1" alt="team1">
-                                <img src="styles/icons/vs2.svg" alt="vs" id="fightIcon">
-                                <img :src="x.emblem2" alt="team2">
+                                <img class="notClicking" :src="x.emblem1" alt="team1">
+                                <img class="notClicking" src="styles/icons/vs2.svg" alt="vs" id="fightIcon">
+                                <img class="notClicking" :src="x.emblem2" alt="team2">
 
                             </div>
-                            <p>Time: {{x.time}}</p>
-                            <p>Location: {{x.location}}</p>
+                            <p class="notClicking">Time: {{x.time}}</p>
+                            <p class="notClicking">Location: {{x.location}}</p>
                         </div>
 
                     </div>
@@ -135,14 +135,14 @@
         <section class="matchScreen">
 
             <div class="header">
-                <img src="styles/icons/home_white.svg" alt="" class="icon">
+                <img @click="buttonHome4()" src="styles/icons/home_white.svg" alt="home" class="icon">
                 <img src="styles/nysl_logo.png" alt="NYSL logo">
-                <div class="icon" href="#"></div>
+                <img @click="buttonBack" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="matchScreenBox">
 
-                <div v-for="x in games">
+                <div v-for="x in match">
                     <div class="matchBox">
                         <div class="allMatches">
                             <p>When: {{x.date}} </p>

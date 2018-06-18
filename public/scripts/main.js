@@ -6,8 +6,7 @@ var app = new Vue({
         locations: [],
         games: [],
         allGames: [],
-       /* hide: true,*/
-        
+        match: []
 
     },
     created: function () {
@@ -29,13 +28,10 @@ var app = new Vue({
 
         },
         openTeam: function (x) {
-
-            /*window.location.href = "detailedTeams.html"*/
             
             this.games = this.allGames;
-            var teamName = x.getAttribute("data-value");
             
-            console.log(teamName);
+            var teamName = x.getAttribute("data-value");
             
             var gamesToShow = this.games.filter(function(game){
                 return game.teams.split(" ").includes(teamName);
@@ -45,23 +41,18 @@ var app = new Vue({
             
             $(".teams, .matchList").toggle();
             
-            /*this.hide = false;*/
-            
         },
         buttonLocation: function(){
             
-            $(".index, .locations").toggle();
-            
+            $(".index, .locations").toggle(); 
         },
         buttonTeams: function(){
             
             $(".index, .teams").toggle();
-            
         },
         buttonHome1: function(){
             
             $(".locations, .index").toggle();
-            
         },
         buttonHome2: function(){
             
@@ -71,6 +62,49 @@ var app = new Vue({
             
             $(".matchList, .index").toggle();
         },
+        buttonHome4: function(){
+            $(".matchScreen, .index").toggle();
+        },
+        
+        singleMatch: function(x){
+            
+            this.match = this.games.slice();
+            
+            console.log(app.match);
+            
+            var matchInfo = x.getAttribute("data-value");
+            var matchTime = x.getAttribute("data-time")
+            
+            console.log(matchInfo);
+            console.log(matchTime);
+            
+            var matchToShow = this.games.filter(function(match){
+                
+                var filter = match.teams.includes(matchInfo);
+                var filter2 = match.time.includes(matchTime);
+                
+                var masterFilter = filter && filter2;
+                
+                return masterFilter;
+            })
+            
+            this.match = matchToShow;
+            
+            $(".matchList, .matchScreen").toggle();
+            
+        },
+        buttonBack: function(){
+            
+            $(".matchScreen, .matchList").toggle();
+        },
+        buttonBack2: function(){
+            
+            $(".matchList, .teams").toggle();
+        },
+        buttonBack3: function(){
+            
+            $(".teams, .index").toggle();
+        }
 
     }
 })

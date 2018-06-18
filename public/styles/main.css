@@ -156,3 +156,7 @@ body{
 .matchScreen, .locations, .teams, .matchList{
     display: none;
 }
+
+.notClicking{
+    pointer-events: none;
+}
