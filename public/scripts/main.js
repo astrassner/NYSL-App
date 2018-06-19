@@ -6,7 +6,7 @@ var app = new Vue({
         locations: [],
         games: [],
         allGames: [],
-        match: []
+        match: [],
 
     },
     created: function () {
@@ -28,96 +28,96 @@ var app = new Vue({
 
         },
         openTeam: function (x) {
-            
+
             this.games = this.allGames;
-            
+
             var teamName = x.getAttribute("data-value");
-            
-            var gamesToShow = this.games.filter(function(game){
+
+            var gamesToShow = this.games.filter(function (game) {
                 return game.teams.split(" ").includes(teamName);
             })
-            
-            this.games = gamesToShow; 
-            
+
+            this.games = gamesToShow;
+
             $(".teams, .matchList").toggle();
-            
+
         },
-        buttonLocation: function(){
-            
-            $(".index, .locations").toggle(); 
+        buttonLocation: function () {
+
+            $(".index, .locations").toggle();
         },
-        buttonTeams: function(){
-            
+        buttonTeams: function () {
+
             $(".index, .teams").toggle();
         },
-        buttonHome1: function(){
-            
+        buttonHome1: function () {
+
             $(".locations, .index").toggle();
         },
-        buttonHome2: function(){
-            
+        buttonHome2: function () {
+
             $(".teams, .index").toggle();
         },
-        buttonHome3: function(){
-            
+        buttonHome3: function () {
+
             $(".matchList, .index").toggle();
         },
-        buttonHome4: function(){
+        buttonHome4: function () {
             $(".matchScreen, .index").toggle();
         },
-        buttonHome5: function(){
-            $(".allChat, .index").toggle();  
+        buttonHome5: function () {
+            $(".allChat, .index").toggle();
         },
-        buttonHome6: function(){
-            $(".matchChat, .index").toggle();  
+        buttonHome6: function () {
+            $(".matchChat, .index").toggle();
         },
-        
-        singleMatch: function(x){
-            
+
+        singleMatch: function (x) {
+
             this.match = this.games.slice();
-            
+
             console.log(app.match);
-            
+
             var matchInfo = x.getAttribute("data-value");
             var matchTime = x.getAttribute("data-time")
-            
+
             console.log(matchInfo);
             console.log(matchTime);
-            
-            var matchToShow = this.games.filter(function(match){
-                
+
+            var matchToShow = this.games.filter(function (match) {
+
                 var filter = match.teams.includes(matchInfo);
                 var filter2 = match.time.includes(matchTime);
-                
+
                 var masterFilter = filter && filter2;
-                
+
                 return masterFilter;
             })
-            
+
             this.match = matchToShow;
-            
+
             $(".matchList, .matchScreen").toggle();
-            
+
         },
-        buttonBack: function(){
-            
+        buttonBack: function () {
+
             $(".matchScreen, .matchList").toggle();
         },
-        buttonBack2: function(){
-            
+        buttonBack2: function () {
+
             $(".matchList, .teams").toggle();
         },
-        buttonBack3: function(){
-            
-            $(".matchChat, .allChat").toggle();
+        buttonBack3: function () {
+
+            $(".matchChat, .matchScreen").toggle();
         },
-        buttonChat: function(){
-            $(".index, .allChat").toggle();
+        buttonChat: function () {
+            $(".index, .matchChat").toggle();
         },
-        buttonChat2: function(){
-            
+        buttonChat2: function () {
+
             $(".matchScreen, .matchChat").toggle();
-        }
+        },
 
     }
 })

@@ -56,7 +56,7 @@
 
                 <img src="styles/icons/soccer-ball_white.svg" @click="buttonTeams()" alt="teams">
                 <img @click="buttonChat" src="styles/icons/chat_white.svg" alt="chat">
-                <img src="styles/icons/navigation_white.svg" @click="buttonLocation()"  alt="locations">
+                <img src="styles/icons/navigation_white.svg" @click="buttonLocation()" alt="locations">
 
             </div>
 
@@ -170,25 +170,39 @@
 
 
         </section>
-        
-        <section class="allChat">
-           
-           <div class="header">
-                <img @click="buttonHome5()" src="styles/icons/home_white.svg" alt="home" class="icon">
-                <img src="styles/nysl_logo.png" alt="NYSL logo">
-                <img @click="buttonHome5()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
-            </div>
-            
-        </section>
-        
+
         <section class="matchChat">
-            
+
             <div class="header">
                 <img @click="buttonHome6()" src="styles/icons/home_white.svg" alt="home" class="icon">
                 <img src="styles/nysl_logo.png" alt="NYSL logo">
                 <img @click="buttonBack3()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
-            
+
+            <div class="advice">
+                You must to be logged
+                <button id="login" class="button is-info">Login!</button>
+            </div>
+
+            <div class="chatBox">
+
+                <div id="posts" class="chat">
+                
+                    
+
+                </div>
+
+            </div>
+
+            <div class="footerChat">
+                <div class="type">
+                    <input id="textInput" class="input" type="text" placeholder="Your message...">
+                    <img id="create-post" src="styles/icons/send_white.svg" alt="send">
+                </div>
+            </div>
+
+
+
         </section>
 
     </div>
@@ -207,6 +221,7 @@
             messagingSenderId: "380514830212"
         };
         firebase.initializeApp(config);
+
     </script>
 
     <!-- jQuery library -->
@@ -217,6 +232,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
     <!-- main -->
     <script src="scripts/main.js"></script>
+    <!-- chat -->
+    <script src="scripts/chat.js"></script>
 
 </body>
 

@@ -71,7 +71,7 @@ body{
     align-items: center;
 }
 
-.footer img{
+.footer img, .footerChat img{
     height: 7vh;
 }
 
@@ -130,7 +130,7 @@ body{
     align-items: center;
 }
 
-.matchScreenBox{
+.matchScreenBox, .chatBox{
     position: absolute;
     top: 12%;
     width: 100%;
@@ -153,10 +153,53 @@ body{
     height: 8vh;
 }
 
-.matchScreen, .locations, .teams, .matchList, .allChat, .matchChat{
+.matchScreen, .locations, .teams, .matchList, .matchChat{
     display: none;
 }
 
 .notClicking{
     pointer-events: none;
+}
+
+.advice{
+    position: absolute;
+    top: 12%;
+    height: 76%;
+    overflow: scroll;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: white;
+}
+
+.chatBox{
+    position: absolute;
+    top: 12%;
+    height: 76%;
+    overflow: scroll;
+}
+
+.footerChat{
+    height: 12%;
+    display: flex;
+    background-color: magenta;
+    border: 1px solid black;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.type{
+    width: 90%;
+    
+}
+
+.type input[type="text"]{
+    width: 80%;
+    margin-right: 2%;
 }
