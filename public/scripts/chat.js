@@ -1,9 +1,6 @@
 document.getElementById("login").addEventListener("click", login);
 document.getElementById("create-post").addEventListener("click", writeNewPost);
 
-
-getPosts();
-
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
@@ -17,6 +14,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+getPosts();
+
 function login() {
 
     // https://firebase.google.com/docs/auth/web/google-signin
@@ -27,14 +26,22 @@ function login() {
 
     // How to Log In
 
-    firebase.auth().signInWithPopup(provider);
-
-    console.log("login");
+    firebase.auth().signInWithPopup(provider)
+        .then(function () {
+            getPosts();
+        })
+        .catch(function () {
+            alert("Something went wrong");
+        });
 
 }
 
 
 function writeNewPost() {
+
+    if (!$("#textInput").val()) {
+        return
+    }
 
     // https://firebase.google.com/docs/database/web/read-and-write
 
@@ -42,12 +49,23 @@ function writeNewPost() {
 
     var text = document.getElementById("textInput").value;
     var userName = firebase.auth().currentUser.displayName;
+    var timeString = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+    var time = (weekday[timeString.getDay()] + ' ' + timeString.getHours()) + ':' + (timeString.getMinutes() < 10 ? '0' : '') + (timeString.getMinutes());
 
     // A post entry.
 
     var post = {
         name: userName,
-        body: text
+        body: text,
+        time: time
     };
 
     // Get a key for a new Post.
@@ -59,9 +77,9 @@ function writeNewPost() {
     var updates = {};
     updates[newPostKey] = post;
 
-    return firebase.database().ref('chat').update(updates);
+    $("#textInput").val("");
 
-    console.log("write");
+    return firebase.database().ref('chat').update(updates);
 
 }
 
@@ -75,13 +93,34 @@ function getPosts() {
 
         var messages = data.val();
 
-        for (var key in messages) {
-            var text = document.createElement("div");
-            var element = messages[key];
+        var template = "";
 
-            text.append(element.body);
-            posts.append(text);
+        for (var key in messages) {
+            if (messages[key].name == firebase.auth().currentUser.displayName) {
+                template += `
+          <div class="myText">
+            <p class="name">${messages[key].name}</p>
+            <p>${messages[key].body}</p>
+            <p class="timePoint">${messages[key].time}</p>
+          </div>
+        `;
+            } else {
+                template += `
+          <div class="otherText">
+            <p class="name">${messages[key].name}</p>
+            <p>${messages[key].body}</p>
+            <p class="timePoint">${messages[key].time}</p>
+          </div>
+        `;
+            }
+
         }
+
+        posts.innerHTML = template;
+
+        $(".chatBox").animate({
+            scrollTop: $(".chatBox").prop("scrollHeight")
+        }, 300);
 
     })
 
