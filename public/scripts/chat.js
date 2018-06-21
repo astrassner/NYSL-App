@@ -1,5 +1,5 @@
 document.getElementById("login").addEventListener("click", login);
-document.getElementById("create-post").addEventListener("click", writeNewPost);
+/*document.getElementById("create-post").addEventListener("click", writeNewPost);*/
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
-getPosts();
+/*getPosts();*/
 
 function login() {
 
@@ -28,7 +28,7 @@ function login() {
 
     firebase.auth().signInWithPopup(provider)
         .then(function () {
-            getPosts();
+            /*getPosts();*/
         })
         .catch(function () {
             alert("Something went wrong");
@@ -37,11 +37,15 @@ function login() {
 }
 
 
-function writeNewPost() {
+function writeNewPost(x) {
+    
+    var chat = x.target.getAttribute("data-value");
+    
+    console.log(chat);
 
-    if (!$("#textInput").val()) {
-        return
-    }
+    /*if (!$("#textInput").val()) {
+        
+    }*/
 
     // https://firebase.google.com/docs/database/web/read-and-write
 
@@ -70,7 +74,7 @@ function writeNewPost() {
 
     // Get a key for a new Post.
 
-    var newPostKey = firebase.database().ref().child('chat').push().key;
+    var newPostKey = firebase.database().ref().child(chat).push().key;
 
     //Write data
 
@@ -79,16 +83,20 @@ function writeNewPost() {
 
     $("#textInput").val("");
 
-    return firebase.database().ref('chat').update(updates);
+    return firebase.database().ref(chat).update(updates);
 
 }
 
 
-function getPosts() {
+function getPosts(x) {
+    
+    var target = x.target.getAttribute("data-value");
+    
+    console.log(target);
 
-    firebase.database().ref('chat').on('value', function (data) {
+    firebase.database().ref(target).on('value', function (data) {
 
-        var posts = document.getElementById("posts");
+        var posts = document.getElementById(target);
         posts.innerHTML = "";
 
         var messages = data.val();

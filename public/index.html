@@ -161,12 +161,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="footer">
+                        <img @click="matchChat($event.target)" onclick="getPosts(event)" :data-value="x.match" src="styles/icons/chat_white.svg" alt="chat">
+                    </div>
                 </div>
             </div>
 
-            <div class="footer">
-                <img @click="buttonChat2()" src="styles/icons/chat_white.svg" alt="chat">
-            </div>
+
 
 
         </section>
@@ -184,22 +185,23 @@
                 <button id="login" class="loginButton">Login</button>
             </div>
 
-            <div class="chatBox">
+            <div class="chatBox" v-for="x in chat">
 
-                <div id="posts" class="chat">
-                
-                    
+                <div :id="x.match" class="chat">
 
+
+
+                </div>
+                <div class="footerChat">
+                    <div class="type">
+                        <input id="textInput" class="input" type="text" placeholder="Your message...">
+                        <img :data-value="x.match" onclick="writeNewPost(event), getPosts(event)" src="styles/icons/send_white.svg" alt="send">
+                    </div>
                 </div>
 
             </div>
 
-            <div class="footerChat">
-                <div class="type">
-                    <input id="textInput" class="input" type="text" placeholder="Your message...">
-                    <img id="create-post" src="styles/icons/send_white.svg" alt="send">
-                </div>
-            </div>
+
 
 
 
@@ -221,7 +223,6 @@
             messagingSenderId: "380514830212"
         };
         firebase.initializeApp(config);
-
     </script>
 
     <!-- jQuery library -->

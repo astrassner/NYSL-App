@@ -7,6 +7,7 @@ var app = new Vue({
         games: [],
         allGames: [],
         match: [],
+        chat: [],
 
     },
     created: function () {
@@ -76,15 +77,10 @@ var app = new Vue({
 
             this.match = this.games.slice();
 
-            console.log(app.match);
-
             var matchInfo = x.getAttribute("data-value");
-            var matchTime = x.getAttribute("data-time")
+            var matchTime = x.getAttribute("data-time");
 
-            console.log(matchInfo);
-            console.log(matchTime);
-
-            var matchToShow = this.games.filter(function (match) {
+            var matchToShow = this.match.filter(function (match) {
 
                 var filter = match.teams.includes(matchInfo);
                 var filter2 = match.time.includes(matchTime);
@@ -116,8 +112,23 @@ var app = new Vue({
         },
         buttonChat2: function () {
 
-            $(".matchScreen, .matchChat").toggle();
+           /* $(".matchScreen, .matchChat").toggle();*/
         },
+        
+        matchChat: function(x){
+            
+            this.chat = this.games.slice();
+            
+            var chatRoom = x.getAttribute("data-value");
+            
+            var chatToShow = this.chat.filter(function(chat){
+                return (chat.match == chatRoom);
+            });
+            
+            this.chat = chatToShow;
+            
+            $(".matchScreen, .matchChat").toggle();
+        }
 
     }
 })
