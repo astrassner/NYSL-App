@@ -19,7 +19,12 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- colorbox -->
+    <link rel="stylesheet" href="styles/colorbox-master/example1/colorbox.css">
+    <!-- main css -->
     <link rel="stylesheet" href="styles/main.css">
     <title>NYSL App</title>
 </head>
@@ -31,7 +36,7 @@
         <section class="index">
 
             <div class="header">
-                <img class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
+                <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
             </div>
 
             <div class="upcomingEvents">
@@ -66,13 +71,13 @@
 
             <div class="header">
                 <img src="styles/icons/home_white.svg" @click="buttonHome1()" alt="home" class="icon">
-                <img class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
+                <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
                 <img @click="buttonHome1()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="buttons">
                 <div v-for="x in locations">
-                    <div @click="openLocations(x.url)" class="linkedButtons">
+                    <div :href="x.url" @click="openLocations()"  class="linkedButtons">
                         {{x.name}}
                     </div>
                 </div>
@@ -84,7 +89,7 @@
 
             <div class="header">
                 <img src="styles/icons/home_white.svg" @click="buttonHome2()" alt="home" class="icon">
-                <img class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
+                <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
                 <img @click="buttonHome2()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
@@ -102,7 +107,7 @@
 
             <div class="header">
                 <img src="styles/icons/home_white.svg" @click="buttonHome3" alt="home" class="icon">
-                <img class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
+                <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
                 <img @click="buttonBack2" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
@@ -136,7 +141,7 @@
 
             <div class="header">
                 <img @click="buttonHome4()" src="styles/icons/home_white.svg" alt="home" class="icon">
-                <img class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
+                <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
                 <img @click="buttonBack" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
@@ -162,7 +167,7 @@
                         </div>
                     </div>
                     <div class="footer">
-                        <img @click="matchChat($event.target)" onclick="getPosts(event)" :data-value="x.match" src="styles/icons/chat_white.svg" alt="chat">
+                        <img @click="matchChat($event.target), check()" onclick="getPosts(event)" :data-value="x.match" src="styles/icons/chat_white.svg" alt="chat">
                     </div>
                 </div>
             </div>
@@ -176,27 +181,31 @@
 
             <div class="header">
                 <img @click="buttonHome6()" src="styles/icons/home_white.svg" alt="home" class="icon">
-                <img class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
+                <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
                 <img @click="buttonBack3()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
-            <div class="advice">
-                You have to be logged
-                <button id="login" class="loginButton">Login</button>
-            </div>
+            <div class="chatinator" v-for="x in chat">
 
-            <div class="chatBox" v-for="x in chat">
-
-                <div :id="x.match" class="chat">
-
-
-
+                <div class="advice">
+                    You have to be logged
+                    <button onclick="login(event)" id="login" :data-value="x.match" class="loginButton">Login</button>
                 </div>
-                <div class="footerChat">
-                    <div class="type">
-                        <input id="textInput" class="input" type="text" placeholder="Your message...">
-                        <img :data-value="x.match" onclick="writeNewPost(event), getPosts(event)" src="styles/icons/send_white.svg" alt="send">
+
+                <div class="chatBox">
+
+                    <div :id="x.match" class="chat">
+
+
+
                     </div>
+                    <div class="footerChat">
+                        <div class="type">
+                            <input id="textInput" class="input" type="text" placeholder="Your message...">
+                            <img :data-value="x.match" onclick="writeNewPost(event), getPosts(event)" src="styles/icons/send_white.svg" alt="send">
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -211,7 +220,7 @@
 
     <!-- firebase -->
 
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -235,6 +244,8 @@
     <script src="scripts/main.js"></script>
     <!-- chat -->
     <script src="scripts/chat.js"></script>
+    <!-- colorbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
 
 </body>
 

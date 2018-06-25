@@ -23,9 +23,14 @@ var app = new Vue({
                 app.allGames = data.games;
             })
         },
-        openLocations: function (x) {
+        openLocations: function () {
 
-            window.open(x);
+            $(".linkedButtons").colorbox({
+                iframe: true,
+                innerWidth: "80%",
+                innerHeight: "75%",
+                fixed: true
+            });
 
         },
         openTeam: function (x) {
@@ -42,6 +47,58 @@ var app = new Vue({
 
             $(".teams, .matchList").toggle();
 
+        },
+        singleMatch: function (x) {
+
+            this.match = this.games.slice();
+
+            var matchInfo = x.getAttribute("data-value");
+            var matchTime = x.getAttribute("data-time");
+
+            var matchToShow = this.match.filter(function (match) {
+
+                var filter = match.teams.includes(matchInfo);
+                var filter2 = match.time.includes(matchTime);
+
+                var masterFilter = filter && filter2;
+
+                return masterFilter;
+            })
+
+            this.match = matchToShow;
+
+            $(".matchList, .matchScreen").toggle();
+
+        },
+        matchChat: function (x) {
+
+            this.chat = this.games.slice();
+
+            var chatRoom = x.getAttribute("data-value");
+
+            var chatToShow = this.chat.filter(function (chat) {
+                return (chat.match == chatRoom);
+            });
+
+            this.chat = chatToShow;
+            
+            console.log(this.chat);
+
+            $(".matchScreen, .matchChat").toggle();
+        },
+        check: function () {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    $(".advice").hide();
+                    $(".chatBox").show();
+
+                } else {
+                    $(".advice").show();
+                    $(".chatBox").hide();
+                    // No user is signed in.
+                }
+            });
         },
         buttonLocation: function () {
 
@@ -73,28 +130,6 @@ var app = new Vue({
             $(".matchChat, .index").toggle();
         },
 
-        singleMatch: function (x) {
-
-            this.match = this.games.slice();
-
-            var matchInfo = x.getAttribute("data-value");
-            var matchTime = x.getAttribute("data-time");
-
-            var matchToShow = this.match.filter(function (match) {
-
-                var filter = match.teams.includes(matchInfo);
-                var filter2 = match.time.includes(matchTime);
-
-                var masterFilter = filter && filter2;
-
-                return masterFilter;
-            })
-
-            this.match = matchToShow;
-
-            $(".matchList, .matchScreen").toggle();
-
-        },
         buttonBack: function () {
 
             $(".matchScreen, .matchList").toggle();
@@ -109,26 +144,8 @@ var app = new Vue({
         },
         buttonChat: function () {
             $(".index, .matchChat").toggle();
-        },
-        buttonChat2: function () {
-
-           /* $(".matchScreen, .matchChat").toggle();*/
-        },
-        
-        matchChat: function(x){
-            
-            this.chat = this.games.slice();
-            
-            var chatRoom = x.getAttribute("data-value");
-            
-            var chatToShow = this.chat.filter(function(chat){
-                return (chat.match == chatRoom);
-            });
-            
-            this.chat = chatToShow;
-            
-            $(".matchScreen, .matchChat").toggle();
         }
+
 
     }
 })

@@ -1,7 +1,7 @@
-document.getElementById("login").addEventListener("click", login);
+/*document.getElementById("login").addEventListener("click", login);*/
 /*document.getElementById("create-post").addEventListener("click", writeNewPost);*/
 
-firebase.auth().onAuthStateChanged(function (user) {
+/*firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
         $(".advice").hide();
@@ -12,11 +12,11 @@ firebase.auth().onAuthStateChanged(function (user) {
         $(".chatBox").hide();
         // No user is signed in.
     }
-});
+});*/
 
 /*getPosts();*/
 
-function login() {
+function login(x) {
 
     // https://firebase.google.com/docs/auth/web/google-signin
 
@@ -28,7 +28,7 @@ function login() {
 
     firebase.auth().signInWithPopup(provider)
         .then(function () {
-            /*getPosts();*/
+            getPosts(x);
         })
         .catch(function () {
             alert("Something went wrong");
@@ -40,8 +40,6 @@ function login() {
 function writeNewPost(x) {
     
     var chat = x.target.getAttribute("data-value");
-    
-    console.log(chat);
 
     /*if (!$("#textInput").val()) {
         
@@ -93,6 +91,7 @@ function getPosts(x) {
     var target = x.target.getAttribute("data-value");
     
     console.log(target);
+    console.log("test");
 
     firebase.database().ref(target).on('value', function (data) {
 
