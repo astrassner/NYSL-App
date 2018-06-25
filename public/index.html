@@ -60,7 +60,7 @@
             <div class="footer">
 
                 <img src="styles/icons/soccer-ball_white.svg" @click="buttonTeams()" alt="teams">
-                <img @click="buttonChat" src="styles/icons/chat_white.svg" alt="chat">
+                <img @click="buttonChat()" src="styles/icons/chat_white.svg" alt="chat">
                 <img src="styles/icons/navigation_white.svg" @click="buttonLocation()" alt="locations">
 
             </div>
@@ -77,7 +77,7 @@
 
             <div class="buttons">
                 <div v-for="x in locations">
-                    <div :href="x.url" @click="openLocations()"  class="linkedButtons">
+                    <div :href="x.url" @click="openLocations()"  class="linkedButtons iframe">
                         {{x.name}}
                     </div>
                 </div>
@@ -189,7 +189,7 @@
 
                 <div class="advice">
                     You have to be logged
-                    <button onclick="login(event)" id="login" :data-value="x.match" class="loginButton">Login</button>
+                    <button onclick="loginGoogle(event)" id="login" :data-value="x.match" class="loginButton">Login</button>
                 </div>
 
                 <div class="chatBox">

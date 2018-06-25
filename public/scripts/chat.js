@@ -16,7 +16,7 @@
 
 /*getPosts();*/
 
-function login(x) {
+function loginGoogle(x) {
 
     // https://firebase.google.com/docs/auth/web/google-signin
 
@@ -34,6 +34,14 @@ function login(x) {
             alert("Something went wrong");
         });
 
+}
+
+function signInEmail(){
+    
+}
+
+function loginEmail(x){
+    
 }
 
 

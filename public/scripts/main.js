@@ -25,7 +25,7 @@ var app = new Vue({
         },
         openLocations: function () {
 
-            $(".linkedButtons").colorbox({
+            $(".iframe").colorbox({
                 iframe: true,
                 innerWidth: "80%",
                 innerHeight: "75%",
@@ -143,7 +143,15 @@ var app = new Vue({
             $(".matchChat, .matchScreen").toggle();
         },
         buttonChat: function () {
-            $(".index, .matchChat").toggle();
+            
+            if (this.chat.length < 1){
+                $(".index, .teams").toggle();
+                
+                alert("Choose your team, go into the match and chat with the others. Afterwards you can join your last chat immediately. (If you reload the page, you have to make this steps again!)")
+            }else{
+                $(".index, .matchChat").toggle();
+            }
+            
         }
 
 
