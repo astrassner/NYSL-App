@@ -1,4 +1,4 @@
-/*document.getElementById("login").addEventListener("click", login);*/
+/*document.getElementById("loginGoogle").addEventListener("click", login);*/
 /*document.getElementById("create-post").addEventListener("click", writeNewPost);*/
 
 /*firebase.auth().onAuthStateChanged(function (user) {
@@ -36,17 +36,59 @@ function loginGoogle(x) {
 
 }
 
-function signInEmail(){
-    
+function signInEmail(x) {
+    var email = $(".registerEmail").val();
+    var password = $(".registerPW").val();
+    var name = $(".registerName").val();
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(function () {
+
+            alert("You have successfully register your account");
+
+            firebase.auth().currentUser.updateProfile({
+                displayName: name
+            });
+
+            getPosts(x);
+
+
+        })
+        .catch(function (error) {
+            var errorMessage = error.message;
+            alert(errorMessage);
+        })
 }
 
-function loginEmail(x){
-    
+function loginEmail(x) {
+    var email = $(".inputEmail").val();
+    var password = $(".inputPW").val();
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function () {
+            getPosts(x);
+        })
+        .catch(function (error) {
+            var errorMessage = error.message;
+            alert(errorMessage);
+        });
+}
+
+function logout() {
+    firebase.auth().signOut().then(function () {
+        // Sign-out successful.
+        $(".accordionLogin").hide();
+        $(".accordionRegister").hide();
+        
+    }).catch(function (error) {
+        // An error happened.
+        alert("Something went wrong");
+    });
 }
 
 
 function writeNewPost(x) {
-    
+
     var chat = x.target.getAttribute("data-value");
 
     /*if (!$("#textInput").val()) {
@@ -59,6 +101,8 @@ function writeNewPost(x) {
 
     var text = document.getElementById("textInput").value;
     var userName = firebase.auth().currentUser.displayName;
+    var email = firebase.auth().currentUser.email;
+
     var timeString = new Date();
     var weekday = new Array(7);
     weekday[0] = "Sun";
@@ -75,7 +119,8 @@ function writeNewPost(x) {
     var post = {
         name: userName,
         body: text,
-        time: time
+        time: time,
+        email: email
     };
 
     // Get a key for a new Post.
@@ -95,9 +140,9 @@ function writeNewPost(x) {
 
 
 function getPosts(x) {
-    
+
     var target = x.target.getAttribute("data-value");
-    
+
     console.log(target);
     console.log("test");
 
@@ -111,7 +156,7 @@ function getPosts(x) {
         var template = "";
 
         for (var key in messages) {
-            if (messages[key].name == firebase.auth().currentUser.displayName) {
+            if (messages[key].email == firebase.auth().currentUser.email) {
                 template += `
           <div class="myText">
             <p class="name">${messages[key].name}</p>

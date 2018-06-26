@@ -81,7 +81,7 @@ var app = new Vue({
             });
 
             this.chat = chatToShow;
-            
+
             console.log(this.chat);
 
             $(".matchScreen, .matchChat").toggle();
@@ -95,10 +95,22 @@ var app = new Vue({
 
                 } else {
                     $(".advice").show();
+                    $(".accordionLogin").hide();
+                    $(".accordionRegister").hide();
                     $(".chatBox").hide();
                     // No user is signed in.
                 }
             });
+        },
+        accordionLogin: function () {
+
+            $(".accordionLogin").toggle();
+
+        },
+        accordionRegister: function () {
+
+            $(".accordionLogin, .accordionRegister").toggle();
+
         },
         buttonLocation: function () {
 
@@ -143,15 +155,15 @@ var app = new Vue({
             $(".matchChat, .matchScreen").toggle();
         },
         buttonChat: function () {
-            
-            if (this.chat.length < 1){
+
+            if (this.chat.length < 1) {
                 $(".index, .teams").toggle();
-                
+
                 alert("Choose your team, go into the match and chat with the others. Afterwards you can join your last chat immediately. (If you reload the page, you have to make this steps again!)")
-            }else{
+            } else {
                 $(".index, .matchChat").toggle();
             }
-            
+
         }
 
 

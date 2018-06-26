@@ -176,6 +176,30 @@ body{
     color: white;
 }
 
+.accordionLogin, .accordionRegister{
+    color: black;
+    display: none;
+    background-color: white;
+    width: 60%;
+    margin-top: 10px;
+}
+
+.styleAccordion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.advice p{
+    margin-bottom: 0;
+}
+
+.advice input{
+    margin-bottom: 5px;
+}
+
 .chatBox{
     position: absolute;
     top: 12%;
@@ -207,6 +231,24 @@ body{
 
 .loginButton{
     color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+}
+
+.loginButton img{
+    height: 4vh;
+    margin-right: 8%;
+}
+
+.loginButton p{
+    margin: 0;
+}
+
+#loginGoogle{
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .myText{
@@ -227,6 +269,7 @@ body{
     background-color: lightgray;
     border: 1px solid lightgray;
     color: black;
+    margin-bottom: 2px;
 }
 
 .chat{
