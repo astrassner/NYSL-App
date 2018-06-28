@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -59,9 +59,9 @@
 
             <div class="footer">
 
-                <img src="styles/icons/soccer-ball_white.svg" @click="buttonTeams()" alt="teams">
+                <img src="styles/icons/soccer-ball_white.svg" @click="toggleButton('index', 'teams')" alt="teams">
                 <img @click="buttonChat()" src="styles/icons/chat_white.svg" alt="chat">
-                <img src="styles/icons/navigation_white.svg" @click="buttonLocation()" alt="locations">
+                <img src="styles/icons/navigation_white.svg" @click="toggleButton('index', 'locations')" alt="locations">
 
             </div>
 
@@ -70,15 +70,17 @@
         <section class="locations">
 
             <div class="header">
-                <img src="styles/icons/home_white.svg" @click="buttonHome1()" alt="home" class="icon">
+                <img src="styles/icons/home_white.svg" @click="toggleButton('index', 'locations')" alt="home" class="icon">
                 <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
-                <img @click="buttonHome1()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
+                <img @click="toggleButton('index', 'locations')" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="buttons">
-                <div v-for="x in locations">
-                    <div :href="x.url" @click="openLocations()" class="linkedButtons iframe">
-                        {{x.name}}
+                <div class="buttonBox">
+                    <div v-for="x in locations">
+                        <div @click="openLocations(x.url)" class="linkedButtons iframe">
+                            {{x.name}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,27 +90,30 @@
         <section class="teams">
 
             <div class="header">
-                <img src="styles/icons/home_white.svg" @click="buttonHome2()" alt="home" class="icon">
+                <img src="styles/icons/home_white.svg" @click="toggleButton('index', 'teams')" alt="home" class="icon">
                 <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
-                <img @click="buttonHome2()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
+                <img @click="toggleButton('index', 'teams')" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="buttons">
-                <div v-for="x in teams">
-                    <div @click="openTeam($event.target)" :data-value="x.name" class="linkedButtons">
-                        <img :src="x.emblem" :data-value="x.name" alt="team emblem">{{x.name}}
+                <div class="buttonBox">
+                    <div v-for="x in teams">
+                        <div @click="openTeam($event.target)" :data-value="x.name" class="linkedButtons">
+                            <img :src="x.emblem" :data-value="x.name" alt="team emblem">{{x.name}}
+                        </div>
                     </div>
 
                 </div>
+
             </div>
         </section>
 
         <section class="matchList">
 
             <div class="header">
-                <img src="styles/icons/home_white.svg" @click="buttonHome3" alt="home" class="icon">
+                <img src="styles/icons/home_white.svg" @click="toggleButton('index', 'matchList')" alt="home" class="icon">
                 <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
-                <img @click="buttonBack2" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
+                <img @click="toggleButton('matchList', 'teams')" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="matchListBox">
@@ -140,9 +145,9 @@
         <section class="matchScreen">
 
             <div class="header">
-                <img @click="buttonHome4()" src="styles/icons/home_white.svg" alt="home" class="icon">
+                <img @click="toggleButton('index', 'matchScreen')" src="styles/icons/home_white.svg" alt="home" class="icon">
                 <img onclick="location.reload()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
-                <img @click="buttonBack" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
+                <img @click="toggleButton('matchList', 'matchScreen')" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="matchScreenBox">
@@ -180,9 +185,9 @@
         <section class="matchChat">
 
             <div class="header">
-                <img @click="buttonHome6()" src="styles/icons/home_white.svg" alt="home" class="icon">
+                <img @click="toggleButton('index', 'matchChat')" src="styles/icons/home_white.svg" alt="home" class="icon">
                 <img onclick="logout()" class="logo" src="styles/nysl_logo.png" alt="NYSL logo">
-                <img @click="buttonBack3()" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
+                <img @click="toggleButton('matchScreen', 'matchChat')" src="styles/icons/back-arrow_white.svg" alt="back" class="icon">
             </div>
 
             <div class="chatinator" v-for="x in chat">
@@ -204,7 +209,7 @@
                             <p>Enter Your Password</p>
                             <input type="text" name="password" placeholder="Password" class="inputPW" required>
                             <div class="accordionButtons">
-                                <button @click="accordionRegister()" class="Register">Register</button>
+                                <button @click="toggleButton('accordionLogin', 'accordionRegister')" class="Register">Register</button>
                                 <button onclick="loginEmail(event)" class="loginLogin" :data-value="x.match">Login</button>
                             </div>
                         </div>
@@ -233,7 +238,7 @@
                     <div class="footerChat">
                         <div class="type">
                             <input id="textInput" class="input" type="text" placeholder="Your message...">
-                            <img :data-value="x.match" onclick="writeNewPost(event), getPosts(event)" src="styles/icons/send_white.svg" alt="send">
+                            <img :data-value="x.match" onclick="writeNewPost(event)" src="styles/icons/send_white.svg" alt="send">
                         </div>
                     </div>
 

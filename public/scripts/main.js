@@ -23,14 +23,16 @@ var app = new Vue({
                 app.allGames = data.games;
             })
         },
-        openLocations: function () {
+        openLocations: function (x) {
+            
+            window.open(x);
 
-            $(".iframe").colorbox({
+            /*$(".iframe").colorbox({
                 iframe: true,
                 innerWidth: "80%",
                 innerHeight: "75%",
                 fixed: true
-            });
+            });*/
 
         },
         openTeam: function (x) {
@@ -103,56 +105,21 @@ var app = new Vue({
             });
         },
         accordionLogin: function () {
-
-            $(".accordionLogin").toggle();
+            
+            if($(".accordionRegister").css("display") == "none"){
+                 $(".accordionLogin").toggle();
+            } else {
+                $(".accordionLogin, .accordionRegister").toggle();
+            };
 
         },
-        accordionRegister: function () {
-
-            $(".accordionLogin, .accordionRegister").toggle();
-
-        },
-        buttonLocation: function () {
-
-            $(".index, .locations").toggle();
-        },
-        buttonTeams: function () {
-
-            $(".index, .teams").toggle();
-        },
-        buttonHome1: function () {
-
-            $(".locations, .index").toggle();
-        },
-        buttonHome2: function () {
-
-            $(".teams, .index").toggle();
-        },
-        buttonHome3: function () {
-
-            $(".matchList, .index").toggle();
-        },
-        buttonHome4: function () {
-            $(".matchScreen, .index").toggle();
-        },
-        buttonHome5: function () {
-            $(".allChat, .index").toggle();
-        },
-        buttonHome6: function () {
-            $(".matchChat, .index").toggle();
-        },
-
-        buttonBack: function () {
-
-            $(".matchScreen, .matchList").toggle();
-        },
-        buttonBack2: function () {
-
-            $(".matchList, .teams").toggle();
-        },
-        buttonBack3: function () {
-
-            $(".matchChat, .matchScreen").toggle();
+        toggleButton: function(div1, div2){
+            
+            var class1 = "." + div1;
+            var class2 = "." + div2;
+            
+            $(class1 + "," + class2).toggle();
+            
         },
         buttonChat: function () {
 

@@ -79,7 +79,7 @@ function logout() {
         // Sign-out successful.
         $(".accordionLogin").hide();
         $(".accordionRegister").hide();
-        
+
     }).catch(function (error) {
         // An error happened.
         alert("Something went wrong");
@@ -136,15 +136,14 @@ function writeNewPost(x) {
 
     return firebase.database().ref(chat).update(updates);
 
+    getPosts(x);
+
 }
 
 
 function getPosts(x) {
 
     var target = x.target.getAttribute("data-value");
-
-    console.log(target);
-    console.log("test");
 
     firebase.database().ref(target).on('value', function (data) {
 
@@ -156,22 +155,27 @@ function getPosts(x) {
         var template = "";
 
         for (var key in messages) {
-            if (messages[key].email == firebase.auth().currentUser.email) {
-                template += `
+
+            if (messages[key].body != "") {
+
+                if (messages[key].email == firebase.auth().currentUser.email) {
+                    template += `
           <div class="myText">
             <p class="name">${messages[key].name}</p>
             <p>${messages[key].body}</p>
             <p class="timePoint">${messages[key].time}</p>
           </div>
         `;
-            } else {
-                template += `
+                } else {
+                    template += `
           <div class="otherText">
             <p class="name">${messages[key].name}</p>
             <p>${messages[key].body}</p>
             <p class="timePoint">${messages[key].time}</p>
           </div>
         `;
+                }
+
             }
 
         }
@@ -180,7 +184,7 @@ function getPosts(x) {
 
         $(".chatBox").animate({
             scrollTop: $(".chatBox").prop("scrollHeight")
-        }, 300);
+        }, 200);
 
     })
 

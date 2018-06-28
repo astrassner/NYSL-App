@@ -11,14 +11,22 @@ body{
 }
 
 .header{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
-    background-color: magenta;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1),to(#ef017c));
+    background: -webkit-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: -o-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%);
     border: 1px solid black;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 12%;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     
 }
 
@@ -27,14 +35,25 @@ body{
     height: 76%;
     width: 100%;
     top: 12%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .eventBox{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 80%;
     height: 80%;
     border: 1px solid black;
@@ -46,9 +65,16 @@ body{
     background-color: green;        
 }
 .text{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     overflow: auto;
 }
 
@@ -62,14 +88,22 @@ body{
 
 .footer{
     height: 12%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    background-color: magenta;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1),to(#ef017c));
+    background: -webkit-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: -o-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%);
     border: 1px solid black;
     position: fixed;
     width: 100%;
     bottom: 0;
-    justify-content: space-around;
-    align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .footer img, .footerChat img{
@@ -78,26 +112,49 @@ body{
 
 .buttons{
     position: absolute;
+    overflow: auto;
+    height: 88%;
     top: 12%;
+}
+
+.buttonBox{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     width: 100%;
-    flex-direction: row;
-    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .linkedButtons{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     height: 100px;
     width: 150px;
     margin: 18px;
     background-color: green;
     font-size: 20px;
     color: black;
-    box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+            box-shadow: 2px 2px 4px #000000;
 }
 
 .linkedButtons:active{
@@ -108,7 +165,15 @@ body{
     height: 50%;
 }
 
-.matchListBox{
+.matchListBox {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+    overflow: auto;
+    height: 88%;
+}
+
+.matchScreenBox, .chatBox{
     position: absolute;
     top: 12%;
     width: 100%;
@@ -126,15 +191,14 @@ body{
 }
 
 .detailedTeam{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.matchScreenBox, .chatBox{
-    position: absolute;
-    top: 12%;
-    width: 100%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .matchBox img{
@@ -144,8 +208,12 @@ body{
 }
 
 .gamemap{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin-top: 20px;
     margin-bottom: 30px;
 }
@@ -166,12 +234,21 @@ body{
     position: absolute;
     top: 12%;
     height: 88%;
-    overflow: scroll;
+    overflow: auto;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: grey;
     color: white;
 }
@@ -185,10 +262,19 @@ body{
 }
 
 .styleAccordion{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 10px;
 }
 
@@ -209,14 +295,23 @@ body{
 
 .footerChat{
     height: 12%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    background-color: magenta;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1),to(#ef017c));
+    background: -webkit-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: -o-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%);
     border: 1px solid black;
     position: fixed;
     width: 100%;
     bottom: 0;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .type{
@@ -231,10 +326,18 @@ body{
 
 .loginButton{
     color: black;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 45%;
+    height: 5vh;
 }
 
 .loginButton img{
@@ -254,27 +357,43 @@ body{
 .myText{
     text-align: left;
     max-width: 80%;
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
     align-self: flex-end;
     border-radius: 8px;
     background-color: green;
     border: 1px solid lightgray;
     color: black;
+    color: black;
+    word-break: break-all;
 }
 
 .otherText{
     text-align: left;
     max-width: 80%;
-    align-self: flex-start;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
     border-radius: 8px;
     background-color: lightgray;
     border: 1px solid lightgray;
     color: black;
     margin-bottom: 2px;
+    word-break: break-all;
+}
+
+.myText p, .otherText p{
+    margin-left: 6px;
+    margin-right: 6px;
 }
 
 .chat{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin: 2%;
 }
 
@@ -286,4 +405,132 @@ body{
 .timePoint{
     font-size: 12px;
     color: #1a1a1a;
+}
+
+@media screen and (max-width: 850px) and (orientation:landscape){
+    
+    .header{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1),to(#ef017c));
+    background: -webkit-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: -o-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%);
+    border: 1px solid black;
+    position: absolute;
+    width: 100%;
+    height: 18%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    
+}
+    .footer{
+    height: 18%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1),to(#ef017c));
+    background: -webkit-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: -o-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%);
+    border: 1px solid black;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+    .footer img, .footerChat img{
+        height: 7vh;
+}
+    .footerChat{
+    height: 18%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1),to(#ef017c));
+    background: -webkit-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: -o-linear-gradient(top, #ff5db1 0%,#ef017c 100%);
+    background: linear-gradient(to bottom, #ff5db1 0%,#ef017c 100%);
+    border: 1px solid black;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+    
+    .upcomingEvents{
+    position: absolute;
+    height: 64%;
+    width: 100%;
+    top: 18%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+    
+    .buttons{
+     position: absolute;
+    overflow: auto;
+    height: 82%;
+    top: 18%;
+}
+    
+    .matchListBox{
+    position: absolute;
+    top: 18%;
+    width: 100%;
+    overflow: auto;
+    height: 88%;
+}
+    .matchScreenBox, .chatBox{
+    position: absolute;
+    top: 18%;
+    width: 100%;
+    overflow: auto;
+    height: 64%;
+    }
+    
+    .advice{
+    position: absolute;
+    top: 18%;
+    height: 88%;
+    overflow: scroll;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: grey;
+    color: white;
+}
+    
 }
